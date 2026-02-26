@@ -23,16 +23,40 @@ app.use(express.json());
 // Storage paths
 const CHATS_DIR = path.join(__dirname, "chats");
 const LOGS_DIR = path.join(__dirname, "logs");
+const USER_MEMORY_FILE = path.join(__dirname, "user-memory.json");
+const USER_CONTEXT_FILE = path.join(__dirname, "user-context.json");
 
 // Ensure directories exist
 if (!fs.existsSync(CHATS_DIR)) fs.mkdirSync(CHATS_DIR);
 if (!fs.existsSync(LOGS_DIR)) fs.mkdirSync(LOGS_DIR);
 
+// Initialize memory file if not exists
+if (!fs.existsSync(USER_MEMORY_FILE)) {
+    fs.writeFileSync(USER_MEMORY_FILE, JSON.stringify({ memories: [] }, null, 2));
+}
+
+// Initialize context file if not exists
+if (!fs.existsSync(USER_CONTEXT_FILE)) {
+    fs.writeFileSync(USER_CONTEXT_FILE, JSON.stringify({
+        season: "Summer",
+        location: "",
+        cropCycle: "",
+        festival: ""
+    }, null, 2));
+}
+
 // Ollama configuration
 const OLLAMA_URL = "http://localhost:11434/api/chat";
 const MODEL_NAME = "gpt-oss:20b";
 
-// Define tool for Ollama
+// Personas
+const PERSONAS = {
+    sarpanch: "You are a wise village Sarpanch (village head) with deep knowledge of rural life, governance, and community welfare. Use rural analogies, speak with a respectful and authoritative tone, and provide guidance like an experienced village elder. Reference traditional wisdom and local customs when appropriate.",
+    sahakar: "You are a rural cooperative banker specializing in micro-finance, savings schemes, and government welfare programs. Focus on financial inclusion, self-help groups (SHGs), agricultural loans, and schemes like PM-KISAN, MGNREGA, and rural banking. Explain financial concepts in simple, relatable terms for rural communities.",
+    mitra: "You are a friendly, energetic village youth who is tech-savvy and enthusiastic about helping others. Keep responses highly energetic, simple, and encouraging. Use casual language, emojis occasionally, and make complex topics easy to understand. Be like a helpful friend who's always excited to assist!"
+};
+
+// Define tools for Ollama
 const LOAN_ELIGIBILITY_TOOL = {
     type: "function",
     function: {
@@ -51,6 +75,29 @@ const LOAN_ELIGIBILITY_TOOL = {
                 }
             },
             required: ["person_name", "loan_amount"]
+        }
+    }
+};
+
+const SAVE_MEMORY_TOOL = {
+    type: "function",
+    function: {
+        name: "save_to_memory",
+        description: "Save important user information to long-term memory. Use this when the user explicitly asks to remember something, shares personal details, preferences, or important context that should be recalled in future conversations. Examples: 'remember that I have 5 acres of land', 'my name is Ramesh', 'I grow wheat and rice', 'remember my village is Sultanpur'.",
+        parameters: {
+            type: "object",
+            properties: {
+                memory_content: {
+                    type: "string",
+                    description: "The information to remember, written as a clear, concise statement (e.g., 'User has 5 acres of agricultural land', 'User name is Ramesh Kumar', 'User grows wheat and rice crops')"
+                },
+                category: {
+                    type: "string",
+                    enum: ["personal", "agricultural", "financial", "family", "preferences", "other"],
+                    description: "Category of the memory for better organization"
+                }
+            },
+            required: ["memory_content", "category"]
         }
     }
 };
@@ -96,7 +143,123 @@ function logToFile(message) {
     fs.appendFileSync(logPath, `[${timestamp}] ${message}\n`);
 }
 
+// Memory management functions
+function loadMemories() {
+    try {
+        const data = fs.readFileSync(USER_MEMORY_FILE, 'utf8');
+        return JSON.parse(data);
+    } catch (error) {
+        return { memories: [] };
+    }
+}
+
+function saveMemory(content, category) {
+    const memories = loadMemories();
+    const newMemory = {
+        id: uuidv4(),
+        content,
+        category,
+        timestamp: new Date().toISOString(),
+        createdAt: new Date().toLocaleString('en-IN', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        })
+    };
+    memories.memories.unshift(newMemory);
+    fs.writeFileSync(USER_MEMORY_FILE, JSON.stringify(memories, null, 2));
+    logToFile(`Memory saved: ${content.substring(0, 50)}...`);
+    return newMemory;
+}
+
+function getMemoriesContext() {
+    const memories = loadMemories();
+    if (memories.memories.length === 0) return "";
+    
+    const memoryLines = memories.memories.map(m => `- ${m.content}`);
+    return `\n\nUser's Saved Information:\n${memoryLines.join('\n')}\n`;
+}
+
+// Context management functions
+function loadUserContext() {
+    try {
+        const data = fs.readFileSync(USER_CONTEXT_FILE, 'utf8');
+        return JSON.parse(data);
+    } catch (error) {
+        return { season: "Summer", location: "", cropCycle: "", festival: "" };
+    }
+}
+
+function saveUserContext(context) {
+    fs.writeFileSync(USER_CONTEXT_FILE, JSON.stringify(context, null, 2));
+    logToFile(`Context updated: ${JSON.stringify(context)}`);
+}
+
+function getUserContextString() {
+    const context = loadUserContext();
+    const parts = [];
+    
+    if (context.season) parts.push(`Current Season: ${context.season}`);
+    if (context.location) parts.push(`Location: ${context.location}`);
+    if (context.cropCycle) parts.push(`Crop Cycle: ${context.cropCycle}`);
+    if (context.festival) parts.push(`Current Festival/Event: ${context.festival}`);
+    
+    if (parts.length === 0) return "";
+    return `\n\nLocal Context:\n${parts.join('\n')}\n`;
+}
+
 // API Routes
+
+// Get all personas
+app.get("/api/personas", (req, res) => {
+    try {
+        const personaList = Object.keys(PERSONAS).map(key => ({
+            id: key,
+            name: key.charAt(0).toUpperCase() + key.slice(1),
+            description: PERSONAS[key]
+        }));
+        res.json(personaList);
+    } catch (error) {
+        console.error("Error fetching personas:", error);
+        res.status(500).json({ error: "Failed to fetch personas" });
+    }
+});
+
+// Get user context
+app.get("/api/context", (req, res) => {
+    try {
+        const context = loadUserContext();
+        res.json(context);
+    } catch (error) {
+        console.error("Error fetching context:", error);
+        res.status(500).json({ error: "Failed to fetch context" });
+    }
+});
+
+// Update user context
+app.post("/api/context", (req, res) => {
+    try {
+        const context = req.body;
+        saveUserContext(context);
+        res.json({ success: true, context });
+    } catch (error) {
+        console.error("Error updating context:", error);
+        res.status(500).json({ error: "Failed to update context" });
+    }
+});
+
+// Get all memories
+app.get("/api/memories", (req, res) => {
+    try {
+        const memories = loadMemories();
+        res.json(memories);
+    } catch (error) {
+        console.error("Error fetching memories:", error);
+        res.status(500).json({ error: "Failed to fetch memories" });
+    }
+});
 
 // Get all chats
 app.get("/api/chats", (req, res) => {
@@ -239,11 +402,31 @@ app.post("/api/chats/:chatId/messages", async (req, res) => {
             // Build messages array for Ollama chat API
             const ollamaMessages = [];
 
-            // Inject personality as system prompt if provided
+            // Build system prompt with persona, context, and memories
+            let systemPrompt = "";
+            
+            // Add persona if provided
             if (personality && personality.trim()) {
+                systemPrompt += personality.trim();
+            }
+            
+            // Add user context
+            const contextString = getUserContextString();
+            if (contextString) {
+                systemPrompt += contextString;
+            }
+            
+            // Add memories
+            const memoriesString = getMemoriesContext();
+            if (memoriesString) {
+                systemPrompt += memoriesString;
+            }
+            
+            // Add system message if we have any context
+            if (systemPrompt) {
                 ollamaMessages.push({
                     role: 'system',
-                    content: personality.trim()
+                    content: systemPrompt
                 });
             }
 
@@ -266,7 +449,7 @@ app.post("/api/chats/:chatId/messages", async (req, res) => {
             const response = await axios.post(OLLAMA_URL, {
                 model: selectedModel,
                 messages: ollamaMessages,
-                tools: [LOAN_ELIGIBILITY_TOOL],
+                tools: [LOAN_ELIGIBILITY_TOOL, SAVE_MEMORY_TOOL],
                 stream: true
             }, {
                 responseType: 'stream'
@@ -308,7 +491,100 @@ app.post("/api/chats/:chatId/messages", async (req, res) => {
                     console.log('Executing tool calls...');
 
                     for (const toolCall of toolCalls) {
-                        if (toolCall.function.name === 'check_loan_eligibility') {
+                        if (toolCall.function.name === 'save_to_memory') {
+                            // Parse arguments
+                            let args;
+                            if (typeof toolCall.function.arguments === 'string') {
+                                args = JSON.parse(toolCall.function.arguments);
+                            } else {
+                                args = toolCall.function.arguments;
+                            }
+
+                            console.log('💾 Saving to memory:', args);
+
+                            // Send status to frontend
+                            res.write(`data: ${JSON.stringify({
+                                status: 'Saving to memory...',
+                                toolCalling: true
+                            })}\n\n`);
+
+                            const savedMemory = saveMemory(args.memory_content, args.category);
+
+                            console.log('✅ Memory saved:', savedMemory.id);
+
+                            // Send saved confirmation
+                            res.write(`data: ${JSON.stringify({
+                                status: '✓ Saved to memory',
+                                toolCalling: true,
+                                memorySaved: true
+                            })}\n\n`);
+
+                            // Continue with response
+                            const toolResult = JSON.stringify({ success: true, message: "Information saved to memory successfully" });
+
+                            // Send tool result back to Ollama
+                            const toolMessages = [...ollamaMessages];
+                            toolMessages.push({
+                                role: 'assistant',
+                                content: fullResponse,
+                                tool_calls: toolCalls
+                            });
+                            toolMessages.push({
+                                role: 'tool',
+                                content: toolResult
+                            });
+
+                            // Get final response from Ollama with tool result
+                            const finalResponse = await axios.post(OLLAMA_URL, {
+                                model: selectedModel,
+                                messages: toolMessages,
+                                stream: true
+                            }, {
+                                responseType: 'stream'
+                            });
+
+                            let finalFullResponse = '';
+
+                            finalResponse.data.on('data', (chunk) => {
+                                const lines = chunk.toString().split('\n').filter(line => line.trim());
+                                for (const line of lines) {
+                                    try {
+                                        const parsed = JSON.parse(line);
+                                        if (parsed.message && parsed.message.content) {
+                                            finalFullResponse += parsed.message.content;
+                                            res.write(`data: ${JSON.stringify({ token: parsed.message.content })}\n\n`);
+                                        }
+                                    } catch (e) {
+                                        // Ignore
+                                    }
+                                }
+                            });
+
+                            finalResponse.data.on('end', () => {
+                                const latestChat = loadChat(chatId);
+                                const aiMessage = {
+                                    role: "assistant",
+                                    content: finalFullResponse || "I've saved that information to memory.",
+                                    timestamp: new Date().toISOString()
+                                };
+                                latestChat.messages.push(aiMessage);
+                                latestChat.updatedAt = new Date().toISOString();
+                                saveChat(chatId, latestChat);
+
+                                console.log(`✅ Completed with memory save. Chat now has ${latestChat.messages.length} messages`);
+                                logToFile(`Memory saved and response completed`);
+
+                                res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+                                res.end();
+                            });
+
+                            finalResponse.data.on('error', (error) => {
+                                console.error("Final response error:", error);
+                                res.write(`data: ${JSON.stringify({ error: "Error generating final response" })}\n\n`);
+                                res.end();
+                            });
+
+                        } else if (toolCall.function.name === 'check_loan_eligibility') {
                             // Parse arguments - handle both string and object
                             let args;
                             if (typeof toolCall.function.arguments === 'string') {
@@ -496,11 +772,31 @@ app.post("/api/chats/:chatId/regenerate", async (req, res) => {
             // Build messages array for Ollama chat API
             const ollamaMessages = [];
 
-            // Inject personality as system prompt if provided
+            // Build system prompt with persona, context, and memories
+            let systemPrompt = "";
+            
+            // Add persona if provided
             if (personality && personality.trim()) {
+                systemPrompt += personality.trim();
+            }
+            
+            // Add user context
+            const contextString = getUserContextString();
+            if (contextString) {
+                systemPrompt += contextString;
+            }
+            
+            // Add memories
+            const memoriesString = getMemoriesContext();
+            if (memoriesString) {
+                systemPrompt += memoriesString;
+            }
+            
+            // Add system message if we have any context
+            if (systemPrompt) {
                 ollamaMessages.push({
                     role: 'system',
-                    content: personality.trim()
+                    content: systemPrompt
                 });
             }
 
