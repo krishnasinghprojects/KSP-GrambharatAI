@@ -52,7 +52,12 @@ body {
   transition: background 0.5s ease, color 0.5s ease;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Luckiest Guy', cursive;
   font-weight: 400;
   letter-spacing: 0.5px;
@@ -150,4 +155,33 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-md);
+}
+
+/* ── Global Themed Scrollbars ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-secondary);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
 }

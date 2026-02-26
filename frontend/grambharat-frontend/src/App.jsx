@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { io } from 'socket.io-client'
-import { Moon, Sun } from 'lucide-react'
 import './App.css'
 import Sidebar from './components/Sidebar'
 import ChatArea from './components/ChatArea'
@@ -16,9 +15,17 @@ function App() {
   const [chats, setChats] = useState([])
   const [currentChatId, setCurrentChatId] = useState(null)
   const [notification, setNotification] = useState(null)
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem('grambharat-darkMode') === 'true'
+  })
   const [selectedModel, setSelectedModel] = useState(AVAILABLE_MODELS[0].id)
   const [socket, setSocket] = useState(null)
+  const [personality, setPersonality] = useState(() => {
+    return localStorage.getItem('grambharat-personality') || ''
+  })
+  const [userName, setUserName] = useState(() => {
+    return localStorage.getItem('grambharat-userName') || 'User'
+  })
 
   useEffect(() => {
     fetchChats()
@@ -38,7 +45,16 @@ function App() {
 
   useEffect(() => {
     document.body.className = darkMode ? 'dark-mode' : 'light-mode'
+    localStorage.setItem('grambharat-darkMode', darkMode)
   }, [darkMode])
+
+  useEffect(() => {
+    localStorage.setItem('grambharat-personality', personality)
+  }, [personality])
+
+  useEffect(() => {
+    localStorage.setItem('grambharat-userName', userName)
+  }, [userName])
 
   const fetchChats = async () => {
     try {
@@ -89,10 +105,16 @@ function App() {
         onSelectChat={setCurrentChatId}
         onNewChat={createNewChat}
         onDeleteChat={deleteChat}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+        personality={personality}
+        setPersonality={setPersonality}
+        userName={userName}
+        setUserName={setUserName}
       />
       <div className="main-content">
         <div className="top-bar">
-          <select 
+          <select
             className="model-selector"
             value={selectedModel}
             onChange={(e) => setSelectedModel(e.target.value)}
@@ -103,18 +125,12 @@ function App() {
               </option>
             ))}
           </select>
-          <button 
-            className="theme-toggle"
-            onClick={() => setDarkMode(!darkMode)}
-            aria-label="Toggle theme"
-          >
-            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
         </div>
         <ChatArea
           chatId={currentChatId}
           selectedModel={selectedModel}
           onChatUpdate={fetchChats}
+          personality={personality}
         />
       </div>
       {notification && (

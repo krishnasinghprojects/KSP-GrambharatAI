@@ -232,3 +232,57 @@
 .user-message .message-footer {
   flex-direction: row-reverse;
 }
+
+/* ── Alternative Pagination ── */
+.alt-pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.alt-nav-btn {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  padding: 3px 5px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.alt-nav-btn:hover:not(:disabled) {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.alt-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.alt-page {
+  font-size: 12px;
+  font-family: 'Noto Serif', serif;
+  font-weight: 600;
+  color: var(--text-secondary);
+  min-width: 30px;
+  text-align: center;
+  user-select: none;
+}
+
+/* Slide transition when switching alternatives */
+.message-text.alt-sliding {
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.message-text:not(.alt-sliding) {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}

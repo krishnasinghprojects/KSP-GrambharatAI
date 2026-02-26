@@ -1,17 +1,45 @@
-import { User, Bot, Copy, RotateCcw, Check } from 'lucide-react'
+import { User, Bot, Copy, RotateCcw, Check, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import './Message.css'
 
-const Message = ({ message, onRegenerate, isLastAI }) => {
+const Message = ({ message, onRegenerate, isLastAI, messageIndex, chatId }) => {
   const isUser = message.role === 'user'
   const [copied, setCopied] = useState(false)
+  const [activeIdx, setActiveIdx] = useState(message.activeIndex || 0)
+  const [displayContent, setDisplayContent] = useState(message.content)
+  const [isSliding, setIsSliding] = useState(false)
+
+  const alternatives = message.alternatives || null
+  const totalAlts = alternatives ? alternatives.length : 0
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(message.content)
+    navigator.clipboard.writeText(displayContent)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
+  }
+
+  const switchAlternative = async (newIndex) => {
+    if (newIndex < 0 || newIndex >= totalAlts || newIndex === activeIdx) return
+
+    setIsSliding(true)
+    setTimeout(async () => {
+      setActiveIdx(newIndex)
+      setDisplayContent(alternatives[newIndex])
+      setIsSliding(false)
+
+      // Persist to server
+      try {
+        await fetch(`http://localhost:3000/api/chats/${chatId}/messages/${messageIndex}/switch`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ activeIndex: newIndex })
+        })
+      } catch (e) {
+        console.error('Failed to persist alternative switch:', e)
+      }
+    }, 200)
   }
 
   return (
@@ -20,12 +48,12 @@ const Message = ({ message, onRegenerate, isLastAI }) => {
         {isUser ? <User size={20} /> : <Bot size={20} />}
       </div>
       <div className="message-content">
-        <div className="message-text">
+        <div className={`message-text ${isSliding ? 'alt-sliding' : ''}`}>
           {isUser ? (
-            <p>{message.content}</p>
+            <p>{displayContent}</p>
           ) : (
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {message.content}
+              {displayContent}
             </ReactMarkdown>
           )}
         </div>
@@ -36,17 +64,39 @@ const Message = ({ message, onRegenerate, isLastAI }) => {
               minute: '2-digit'
             })}
           </div>
+
+          {/* Pagination for alternatives */}
+          {!isUser && totalAlts > 1 && (
+            <div className="alt-pagination">
+              <button
+                className="alt-nav-btn"
+                onClick={() => switchAlternative(activeIdx - 1)}
+                disabled={activeIdx === 0}
+              >
+                <ChevronLeft size={14} />
+              </button>
+              <span className="alt-page">{activeIdx + 1}/{totalAlts}</span>
+              <button
+                className="alt-nav-btn"
+                onClick={() => switchAlternative(activeIdx + 1)}
+                disabled={activeIdx === totalAlts - 1}
+              >
+                <ChevronRight size={14} />
+              </button>
+            </div>
+          )}
+
           <div className="message-actions">
-            <button 
-              className="action-btn copy-btn" 
+            <button
+              className="action-btn copy-btn"
               onClick={handleCopy}
               title="Copy message"
             >
               {copied ? <Check size={16} /> : <Copy size={16} />}
             </button>
             {!isUser && isLastAI && onRegenerate && (
-              <button 
-                className="action-btn regenerate-btn" 
+              <button
+                className="action-btn regenerate-btn"
                 onClick={onRegenerate}
                 title="Regenerate response"
               >

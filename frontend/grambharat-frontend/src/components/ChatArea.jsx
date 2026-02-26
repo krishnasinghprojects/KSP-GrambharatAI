@@ -4,7 +4,7 @@ import './ChatArea.css'
 import Message from './Message'
 import ThinkingAnimation from './ThinkingAnimation'
 
-const ChatArea = ({ chatId, selectedModel, onChatUpdate }) => {
+const ChatArea = ({ chatId, selectedModel, onChatUpdate, personality }) => {
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState('')
   const [isThinking, setIsThinking] = useState(false)
@@ -72,7 +72,7 @@ const ChatArea = ({ chatId, selectedModel, onChatUpdate }) => {
       const response = await fetch(`http://localhost:3000/api/chats/${chatId}/messages`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input, model: selectedModel })
+        body: JSON.stringify({ message: input, model: selectedModel, personality })
       })
 
       const reader = response.body.getReader()
@@ -90,22 +90,22 @@ const ChatArea = ({ chatId, selectedModel, onChatUpdate }) => {
           if (line.startsWith('data: ')) {
             try {
               const data = JSON.parse(line.slice(6))
-              
+
               if (data.status) {
                 setThinkingStatus(data.status)
               }
-              
+
               if (data.toolCalling) {
                 setToolCalling(true)
               }
-              
+
               if (data.token) {
                 accumulatedText += data.token
                 setStreamingMessage(accumulatedText)
                 setThinkingStatus('')
                 setToolCalling(false)
               }
-              
+
               if (data.done) {
                 setIsThinking(false)
                 setStreamingMessage('')
@@ -135,8 +135,6 @@ const ChatArea = ({ chatId, selectedModel, onChatUpdate }) => {
     const lastUserMessage = [...messages].reverse().find(m => m.role === 'user')
     if (!lastUserMessage) return
 
-    const messagesWithoutLastAI = messages.slice(0, -1)
-    setMessages(messagesWithoutLastAI)
     setIsThinking(true)
     setStreamingMessage('')
     setThinkingStatus('')
@@ -146,7 +144,7 @@ const ChatArea = ({ chatId, selectedModel, onChatUpdate }) => {
       const response = await fetch(`http://localhost:3000/api/chats/${chatId}/regenerate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: lastUserMessage.content, model: selectedModel })
+        body: JSON.stringify({ message: lastUserMessage.content, model: selectedModel, personality })
       })
 
       const reader = response.body.getReader()
@@ -164,22 +162,22 @@ const ChatArea = ({ chatId, selectedModel, onChatUpdate }) => {
           if (line.startsWith('data: ')) {
             try {
               const data = JSON.parse(line.slice(6))
-              
+
               if (data.status) {
                 setThinkingStatus(data.status)
               }
-              
+
               if (data.toolCalling) {
                 setToolCalling(true)
               }
-              
+
               if (data.token) {
                 accumulatedText += data.token
                 setStreamingMessage(accumulatedText)
                 setThinkingStatus('')
                 setToolCalling(false)
               }
-              
+
               if (data.done) {
                 setIsThinking(false)
                 setStreamingMessage('')
@@ -221,17 +219,19 @@ const ChatArea = ({ chatId, selectedModel, onChatUpdate }) => {
     )
   }
 
-  const lastAIMessageIndex = messages.length > 0 && messages[messages.length - 1]?.role === 'assistant' 
-    ? messages.length - 1 
+  const lastAIMessageIndex = messages.length > 0 && messages[messages.length - 1]?.role === 'assistant'
+    ? messages.length - 1
     : -1
 
   return (
     <div className="chat-area">
       <div className="messages-container">
         {messages.map((message, index) => (
-          <Message 
-            key={index} 
-            message={message} 
+          <Message
+            key={index}
+            message={message}
+            messageIndex={index}
+            chatId={chatId}
             onRegenerate={index === lastAIMessageIndex ? regenerateResponse : null}
             isLastAI={index === lastAIMessageIndex}
           />

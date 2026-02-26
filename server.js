@@ -164,7 +164,7 @@ app.get("/api/chats/:chatId/messages", (req, res) => {
 app.post("/api/chats/:chatId/messages", async (req, res) => {
     try {
         const { chatId } = req.params;
-        const { message, model } = req.body;
+        const { message, model, personality } = req.body;
 
         const selectedModel = model || MODEL_NAME;
 
@@ -238,6 +238,14 @@ app.post("/api/chats/:chatId/messages", async (req, res) => {
         try {
             // Build messages array for Ollama chat API
             const ollamaMessages = [];
+
+            // Inject personality as system prompt if provided
+            if (personality && personality.trim()) {
+                ollamaMessages.push({
+                    role: 'system',
+                    content: personality.trim()
+                });
+            }
 
             // Add all previous messages
             for (const msg of previousMessages) {
@@ -460,7 +468,7 @@ app.post("/api/chats/:chatId/messages", async (req, res) => {
 app.post("/api/chats/:chatId/regenerate", async (req, res) => {
     try {
         const { chatId } = req.params;
-        const { message, model } = req.body;
+        const { message, model, personality } = req.body;
 
         const selectedModel = model || MODEL_NAME;
 
@@ -487,6 +495,14 @@ app.post("/api/chats/:chatId/regenerate", async (req, res) => {
         try {
             // Build messages array for Ollama chat API
             const ollamaMessages = [];
+
+            // Inject personality as system prompt if provided
+            if (personality && personality.trim()) {
+                ollamaMessages.push({
+                    role: 'system',
+                    content: personality.trim()
+                });
+            }
 
             // Add all previous messages except the last AI response
             for (let i = 0; i < previousMessages.length - 1; i++) {
@@ -538,16 +554,32 @@ app.post("/api/chats/:chatId/regenerate", async (req, res) => {
             });
 
             response.data.on('end', () => {
-                // Add new AI message
-                const aiMessage = {
-                    role: "assistant",
-                    content: fullResponse || "I apologize, but I couldn't generate a response.",
-                    timestamp: new Date().toISOString()
-                };
-                chat.messages.push(aiMessage);
+                // Store as alternative on the last AI message instead of pushing new
+                const latestChat = loadChat(chatId);
+                const lastMsg = latestChat.messages[latestChat.messages.length - 1];
 
-                chat.updatedAt = new Date().toISOString();
-                saveChat(chatId, chat);
+                if (lastMsg && lastMsg.role === 'assistant') {
+                    // Initialize alternatives array if not present
+                    if (!lastMsg.alternatives) {
+                        lastMsg.alternatives = [lastMsg.content];
+                    }
+                    // Add new response as an alternative
+                    const newContent = fullResponse || "I apologize, but I couldn't generate a response.";
+                    lastMsg.alternatives.push(newContent);
+                    lastMsg.activeIndex = lastMsg.alternatives.length - 1;
+                    lastMsg.content = newContent;
+                } else {
+                    // Fallback: just push a new message
+                    const aiMessage = {
+                        role: "assistant",
+                        content: fullResponse || "I apologize, but I couldn't generate a response.",
+                        timestamp: new Date().toISOString()
+                    };
+                    latestChat.messages.push(aiMessage);
+                }
+
+                latestChat.updatedAt = new Date().toISOString();
+                saveChat(chatId, latestChat);
 
                 res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
                 res.end();
@@ -581,6 +613,38 @@ app.post("/api/chats/:chatId/regenerate", async (req, res) => {
         if (!res.headersSent) {
             res.status(500).json({ error: "Failed to regenerate response" });
         }
+    }
+});
+
+// Switch active alternative for a message
+app.post("/api/chats/:chatId/messages/:msgIndex/switch", async (req, res) => {
+    try {
+        const { chatId, msgIndex } = req.params;
+        const { activeIndex } = req.body;
+
+        const chat = loadChat(chatId);
+        if (!chat) {
+            return res.status(404).json({ error: "Chat not found" });
+        }
+
+        const idx = parseInt(msgIndex);
+        const msg = chat.messages[idx];
+        if (!msg || !msg.alternatives) {
+            return res.status(400).json({ error: "No alternatives for this message" });
+        }
+
+        if (activeIndex < 0 || activeIndex >= msg.alternatives.length) {
+            return res.status(400).json({ error: "Invalid alternative index" });
+        }
+
+        msg.activeIndex = activeIndex;
+        msg.content = msg.alternatives[activeIndex];
+        saveChat(chatId, chat);
+
+        res.json({ success: true, content: msg.content });
+    } catch (error) {
+        console.error("Error switching alternative:", error);
+        res.status(500).json({ error: "Failed to switch alternative" });
     }
 });
 
