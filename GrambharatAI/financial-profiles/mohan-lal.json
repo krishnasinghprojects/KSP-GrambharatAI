@@ -1,0 +1,77 @@
+{
+  "personalInfo": {
+    "name": "Mohan Lal",
+    "age": 55,
+    "occupation": "Retired Government Employee & Small Shop Owner",
+    "education": "Graduate",
+    "familyMembers": 6,
+    "village": "Mohanpur",
+    "district": "Varanasi"
+  },
+  "income": {
+    "monthlySalary": 0,
+    "pensionIncome": 28000,
+    "businessIncome": 18000,
+    "rentalIncome": 8000,
+    "totalMonthlyIncome": 54000,
+    "incomeStability": "Very Stable",
+    "employmentYears": 30
+  },
+  "assets": {
+    "landOwnership": {
+      "acres": 8.0,
+      "estimatedValue": 4800000,
+      "irrigated": true
+    },
+    "property": {
+      "house": "Owned",
+      "estimatedValue": 1500000,
+      "rentalProperty": 800000
+    },
+    "livestock": {
+      "cattle": 2,
+      "estimatedValue": 100000
+    },
+    "gold": {
+      "grams": 150,
+      "estimatedValue": 900000
+    },
+    "bankBalance": 450000,
+    "fixedDeposits": 800000,
+    "businessAssets": 300000,
+    "totalAssets": 9650000
+  },
+  "liabilities": {
+    "existingLoans": [
+      {
+        "type": "Home Loan",
+        "principal": 500000,
+        "outstanding": 150000,
+        "emi": 15000,
+        "startDate": "2018-04-01",
+        "tenure": 60,
+        "remainingMonths": 10
+      }
+    ],
+    "totalDebt": 150000,
+    "monthlyEMI": 15000
+  },
+  "creditHistory": {
+    "totalAccounts": 6,
+    "oldestAccountYears": 25,
+    "recentDefaults": 0,
+    "totalDefaults": 0,
+    "onTimePayments": 285,
+    "latePayments": 3,
+    "missedPayments": 0,
+    "creditInquiries": 1,
+    "lastInquiryMonths": 36
+  },
+  "expenses": {
+    "monthlyExpenses": 18000,
+    "educationExpenses": 8000,
+    "medicalExpenses": 5000,
+    "businessExpenses": 6000,
+    "totalMonthlyExpenses": 37000
+  }
+}

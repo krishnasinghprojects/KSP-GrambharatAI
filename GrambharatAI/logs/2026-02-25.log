@@ -1,0 +1,169 @@
+[2026-02-25T19:31:59.546Z] Server started
+[2026-02-25T19:32:00.518Z] Frontend connected: u9OOH49oHWegrQlAAAAB
+[2026-02-25T19:32:05.356Z] Frontend connected: mXOWkTkiNi_cuXRjAAAD
+[2026-02-25T19:32:15.966Z] Frontend disconnected: u9OOH49oHWegrQlAAAAB
+[2026-02-25T19:32:16.135Z] Frontend connected: 2IbFmSuoNn2chNliAAAG
+[2026-02-25T19:32:22.031Z] Frontend connected: IQT9bLcCuWN4F0ZAAAAJ
+[2026-02-25T19:32:23.533Z] Frontend disconnected: IQT9bLcCuWN4F0ZAAAAJ
+[2026-02-25T19:32:23.562Z] Frontend connected: s3juutTUHGP_riVmAAAM
+[2026-02-25T19:32:24.434Z] Created new chat: 1cdebab0-8646-45f2-9e0d-b628eae5ffd3
+[2026-02-25T19:32:29.764Z] Sending to Ollama: what is ai
+[2026-02-25T19:32:43.981Z] Frontend disconnected: mXOWkTkiNi_cuXRjAAAD
+[2026-02-25T19:32:44.021Z] Frontend connected: Q2zcnbCfGHK1_hY-AAAP
+[2026-02-25T19:32:47.203Z] Frontend disconnected: Q2zcnbCfGHK1_hY-AAAP
+[2026-02-25T19:32:47.236Z] Frontend connected: ElwsBy2Y-8Uwg6SMAAAS
+[2026-02-25T19:32:48.160Z] Frontend disconnected: ElwsBy2Y-8Uwg6SMAAAS
+[2026-02-25T19:32:48.191Z] Frontend connected: DZ04vp_HoEHaMGU6AAAV
+[2026-02-25T19:32:48.730Z] Frontend disconnected: DZ04vp_HoEHaMGU6AAAV
+[2026-02-25T19:32:48.762Z] Frontend connected: C3t7MjDaE2QANVbkAAAY
+[2026-02-25T19:32:52.589Z] Sending to Ollama: what is ai
+[2026-02-25T19:32:53.270Z] AI Response: **Artificial Intelligence (AI)** is the field of computer science that builds systems capable of per...
+[2026-02-25T19:32:56.068Z] Frontend disconnected: C3t7MjDaE2QANVbkAAAY
+[2026-02-25T19:33:07.781Z] AI Response: **Artificial Intelligence (AI)**  
+A field of computer science and engineering focused on building s...
+[2026-02-25T19:36:59.848Z] Frontend disconnected: 2IbFmSuoNn2chNliAAAG
+[2026-02-25T19:36:59.911Z] Frontend connected: V4mufN4vO_txf7W-AAAb
+[2026-02-25T19:37:02.627Z] Frontend disconnected: V4mufN4vO_txf7W-AAAb
+[2026-02-25T19:37:02.655Z] Frontend connected: tLL5w6s7zfZRczs9AAAe
+[2026-02-25T19:37:03.240Z] Frontend disconnected: tLL5w6s7zfZRczs9AAAe
+[2026-02-25T19:37:03.270Z] Frontend connected: cpn7Qqvoude8io7AAAAh
+[2026-02-25T19:37:04.170Z] Frontend disconnected: cpn7Qqvoude8io7AAAAh
+[2026-02-25T19:37:04.206Z] Frontend connected: NxNuIbW6xjIpWT5rAAAk
+[2026-02-25T19:37:21.954Z] Regenerated response for chat: 1cdebab0-8646-45f2-9e0d-b628eae5ffd3
+[2026-02-25T19:37:37.359Z] Frontend disconnected: NxNuIbW6xjIpWT5rAAAk
+[2026-02-25T19:37:37.360Z] Frontend disconnected: s3juutTUHGP_riVmAAAM
+[2026-02-25T19:37:37.364Z] Frontend connected: CKn__vsDFPsWPysBAAAn
+[2026-02-25T19:37:37.368Z] Frontend connected: ssw1gs2HHYy9D_iMAAAo
+[2026-02-25T19:37:43.370Z] Frontend disconnected: ssw1gs2HHYy9D_iMAAAo
+[2026-02-25T19:37:43.378Z] Frontend disconnected: CKn__vsDFPsWPysBAAAn
+[2026-02-25T19:37:43.491Z] Frontend connected: R0SubFVMJKdQP2GVAAAt
+[2026-02-25T19:37:43.492Z] Frontend connected: PnHwS5usZP2bCRK0AAAu
+[2026-02-25T19:38:24.450Z] Frontend disconnected: PnHwS5usZP2bCRK0AAAu
+[2026-02-25T19:38:24.457Z] Frontend disconnected: R0SubFVMJKdQP2GVAAAt
+[2026-02-25T19:38:24.559Z] Frontend connected: Puiz72bMLkX265_nAAAz
+[2026-02-25T19:38:24.560Z] Frontend connected: vvnIc60flya-P9THAAA0
+[2026-02-25T19:38:57.268Z] Frontend disconnected: vvnIc60flya-P9THAAA0
+[2026-02-25T19:38:57.324Z] Frontend connected: sbnHAdc47-I2PzRGAAA3
+[2026-02-25T19:39:18.712Z] Created new chat: 15c5789d-c89f-44a5-b7d2-d6cb68ca31c6
+[2026-02-25T19:40:52.017Z] Created new chat: 28e6252b-a00b-41bf-8127-c38bde3b09f8
+[2026-02-25T19:40:53.753Z] Deleted chat: 15c5789d-c89f-44a5-b7d2-d6cb68ca31c6
+[2026-02-25T19:40:57.257Z] Sending to Ollama: what is appleg
+[2026-02-25T19:41:17.846Z] AI Response: It looks like there might be a typo in your question. Could you let me know what you’re referring to...
+[2026-02-25T19:41:40.305Z] Server started
+[2026-02-25T19:41:40.547Z] Frontend connected: 19j_0tatfAIm5Y3fAAAB
+[2026-02-25T19:41:41.356Z] Frontend connected: SX0jxA90GnAc4HsRAAAD
+[2026-02-25T19:41:48.433Z] Frontend disconnected: 19j_0tatfAIm5Y3fAAAB
+[2026-02-25T19:41:48.722Z] Frontend connected: 1YjjWOHHlOiGVlX4AAAG
+[2026-02-25T19:41:48.945Z] Frontend connected: 7HiFsIQGWIS4a5X1AAAJ
+[2026-02-25T19:41:52.045Z] Frontend disconnected: 7HiFsIQGWIS4a5X1AAAJ
+[2026-02-25T19:41:52.093Z] Frontend connected: h9xZ6AhHSxf-WlGTAAAM
+[2026-02-25T19:41:53.586Z] Created new chat: 7efaf166-5518-4c05-b837-9a59e32f9ad0
+[2026-02-25T19:41:57.264Z] Sending to Ollama: what is apple
+[2026-02-25T19:42:04.077Z] AI Response completed: **Apple** can refer to two common meanings:
+
+| Meaning | What it is |
+|---------|------------|
+| **F...
+[2026-02-25T19:42:16.442Z] Sending to Ollama: no the fruit what is it
+[2026-02-25T19:42:29.360Z] AI Response completed: Sure thing—let’s pin it down! Could you give me a quick description or a hint about the fruit? For e...
+[2026-02-25T19:43:52.694Z] Sending to Ollama: i mean the fruit apple what is it
+[2026-02-25T19:44:05.407Z] AI Response completed: Sure! An **apple** is a sweet, crisp fruit that grows on apple trees (genus *Malus*, species *M. dom...
+[2026-02-25T19:46:24.353Z] Frontend disconnected: 1YjjWOHHlOiGVlX4AAAG
+[2026-02-25T19:46:24.354Z] Frontend disconnected: h9xZ6AhHSxf-WlGTAAAM
+[2026-02-25T19:46:24.357Z] Frontend connected: 6G8Mcn6bSZ-ZMIc1AAAP
+[2026-02-25T19:46:24.358Z] Frontend connected: Xs4GpnUMrBcVAQsbAAAQ
+[2026-02-25T19:47:35.094Z] Frontend disconnected: SX0jxA90GnAc4HsRAAAD
+[2026-02-25T19:47:35.179Z] Frontend connected: he0RV-4yV6EEQfP9AAAT
+[2026-02-25T19:47:39.249Z] Frontend disconnected: 6G8Mcn6bSZ-ZMIc1AAAP
+[2026-02-25T19:47:41.607Z] Frontend disconnected: he0RV-4yV6EEQfP9AAAT
+[2026-02-25T19:47:42.547Z] Frontend disconnected: Xs4GpnUMrBcVAQsbAAAQ
+[2026-02-25T19:47:42.624Z] Frontend connected: L6ydRbG4d2VjY2-XAAAW
+[2026-02-25T19:48:07.361Z] Frontend connected: KcxoNEysNpEI1NExAAAZ
+[2026-02-25T19:48:09.290Z] Frontend disconnected: L6ydRbG4d2VjY2-XAAAW
+[2026-02-25T19:48:10.938Z] Deleted chat: 28e6252b-a00b-41bf-8127-c38bde3b09f8
+[2026-02-25T19:48:11.450Z] Deleted chat: 7efaf166-5518-4c05-b837-9a59e32f9ad0
+[2026-02-25T19:48:17.461Z] Created new chat: 7907d139-2c66-4e68-b823-7f245284b938
+[2026-02-25T19:48:23.673Z] Sending to Ollama: what is an apple 
+[2026-02-25T19:48:42.800Z] AI Response completed: An **apple** is a sweet, crisp fruit that grows on apple trees (genus *Malus*). The most common cult...
+[2026-02-25T19:48:50.727Z] Created new chat: 1dda9807-e6ca-46a9-a821-9cc996330584
+[2026-02-25T19:50:09.865Z] Sending to Ollama: tell me more about its nutrition like protien amount specifically
+[2026-02-25T19:50:59.676Z] Frontend disconnected: KcxoNEysNpEI1NExAAAZ
+[2026-02-25T19:50:59.728Z] Frontend connected: p6qDbpmxF52XGzNgAAAc
+[2026-02-25T19:51:13.973Z] Sending to Ollama: ok whats its protien content
+[2026-02-25T19:52:34.248Z] AI Response completed: ### Protein in Skin‑less, Boneless Chicken Breast  
+(Values are for **cooked** chicken breast, 100 g...
+[2026-02-25T19:52:59.682Z] AI Response completed: I’d be happy to give you the protein amount. Just let me know which specific protein source you’re i...
+[2026-02-25T19:54:54.341Z] Frontend disconnected: p6qDbpmxF52XGzNgAAAc
+[2026-02-25T19:54:54.388Z] Frontend connected: IytxNE0hxoOW5IhZAAAf
+[2026-02-25T19:55:03.467Z] Frontend disconnected: IytxNE0hxoOW5IhZAAAf
+[2026-02-25T19:55:03.670Z] Frontend connected: Mrpur07iOgHXulzrAAAi
+[2026-02-25T19:55:29.522Z] Created new chat: e69d50d3-4560-4a64-b6b7-fae1b066dcb4
+[2026-02-25T19:55:41.483Z] Sending to Ollama: what is 2 + 2 
+[2026-02-25T19:55:43.601Z] AI Response completed: 2 + 2 = **4**...
+[2026-02-25T19:55:50.267Z] Sending to Ollama: and +2 on that
+[2026-02-25T19:56:08.446Z] AI Response completed: Got it! To make sure I give you the right answer, could you let me know exactly what you’re adding +...
+[2026-02-25T19:59:09.050Z] Deleted chat: e69d50d3-4560-4a64-b6b7-fae1b066dcb4
+[2026-02-25T19:59:12.219Z] Deleted chat: 7907d139-2c66-4e68-b823-7f245284b938
+[2026-02-25T19:59:12.986Z] Deleted chat: 1dda9807-e6ca-46a9-a821-9cc996330584
+[2026-02-25T19:59:13.578Z] Deleted chat: 1cdebab0-8646-45f2-9e0d-b628eae5ffd3
+[2026-02-25T20:00:15.948Z] Created new chat: 4bdaf11e-6ffb-4b3f-b52f-fa805f365f6d
+[2026-02-25T20:00:20.630Z] Sending to Ollama: what is an ai
+[2026-02-25T20:00:34.261Z] AI Response completed: **Artificial Intelligence (AI)** is a field of computer science that focuses on creating systems or ...
+[2026-02-25T20:00:45.417Z] Sending to Ollama: ok whats its impace in healthcare ?
+[2026-02-25T20:01:30.822Z] AI Response completed: ### The Impact of AI in Healthcare – A Quick‑Guide
+
+| Domain | What AI Does | Example Tools / Use‑Ca...
+[2026-02-25T20:01:43.955Z] Created new chat: 64cf1150-b52d-45d9-b67a-d75b546f9702
+[2026-02-25T20:01:54.173Z] Sending to Ollama: mujhe ye batao ai kya hai hindi me
+[2026-02-25T20:02:22.179Z] AI Response completed: **AI (Artificial Intelligence) क्या है?**
+
+**कृत्रिम बुद्धिमत्ता (Artificial Intelligence)**  
+- यह ...
+[2026-02-25T20:06:20.677Z] Frontend disconnected: Mrpur07iOgHXulzrAAAi
+[2026-02-25T20:06:20.758Z] Frontend connected: qRwnVI9y9Y4Lo2lTAAAl
+[2026-02-25T20:06:37.858Z] Regenerating response for chat: 4bdaf11e-6ffb-4b3f-b52f-fa805f365f6d
+[2026-02-25T20:10:07.364Z] Frontend disconnected: qRwnVI9y9Y4Lo2lTAAAl
+[2026-02-25T20:10:07.369Z] Frontend connected: hCBhxS0OTwif6qRBAAAn
+[2026-02-25T20:11:23.218Z] Frontend disconnected: hCBhxS0OTwif6qRBAAAn
+[2026-02-25T20:11:23.266Z] Frontend connected: iJ4RgdQ79xMiVdR6AAAq
+[2026-02-25T20:11:24.872Z] Created new chat: 3c754cc9-fd48-4458-8933-04f7790f8f52
+[2026-02-25T20:11:36.144Z] Sending to Ollama: what is ai
+[2026-02-25T20:12:02.056Z] AI Response completed: **AI (Artificial Intelligence)**  
+— a field of computer science that builds systems capable of perf...
+[2026-02-25T20:12:33.945Z] Frontend disconnected: iJ4RgdQ79xMiVdR6AAAq
+[2026-02-25T20:12:33.988Z] Frontend connected: 0luWg_J_piQHfccAAAAt
+[2026-02-25T20:28:28.396Z] Server started
+[2026-02-25T20:28:30.157Z] Frontend connected: MrftV-i3RZOdnjaHAAAB
+[2026-02-25T20:29:34.092Z] Frontend disconnected: MrftV-i3RZOdnjaHAAAB
+[2026-02-25T20:29:34.161Z] Frontend connected: 8WNMsgj2fT5zaGUrAAAE
+[2026-02-25T20:29:35.033Z] Created new chat: ff86dec9-6517-4042-8cfd-3c96b82ebea6
+[2026-02-25T20:29:38.874Z] Sending to Ollama with 0 previous messages
+[2026-02-25T20:32:16.194Z] Server started
+[2026-02-25T20:32:19.873Z] Frontend connected: GdGdHfHiHT0wMbAdAAAB
+[2026-02-25T20:32:21.063Z] Frontend disconnected: GdGdHfHiHT0wMbAdAAAB
+[2026-02-25T20:32:21.118Z] Frontend connected: yaubIBvQBriQy_SIAAAE
+[2026-02-25T20:32:23.252Z] Deleted chat: ff86dec9-6517-4042-8cfd-3c96b82ebea6
+[2026-02-25T20:32:24.416Z] Created new chat: fd4c49dd-82a8-4e52-b85f-3b4d2a87ae45
+[2026-02-25T20:32:38.048Z] Sending to Ollama with 0 previous messages
+[2026-02-25T20:32:47.427Z] AI Response with tool completed
+[2026-02-25T20:32:56.604Z] Created new chat: f68c8808-e280-4341-9c27-b6db571bae34
+[2026-02-25T20:33:03.052Z] Sending to Ollama with 0 previous messages
+[2026-02-25T20:33:14.217Z] AI Response with tool completed
+[2026-02-25T20:33:16.797Z] Created new chat: 3ae82caa-be26-45d1-9774-736f76d9b581
+[2026-02-25T20:33:31.840Z] Sending to Ollama with 0 previous messages
+[2026-02-25T20:33:40.970Z] AI Response completed: I’m sorry, but I don’t have the necessary information about Modi Ji’s financial profile to determine...
+[2026-02-25T20:33:46.857Z] Created new chat: a8ad9058-733d-4d46-b149-60983cd6da39
+[2026-02-25T20:33:53.936Z] Sending to Ollama with 0 previous messages
+[2026-02-25T20:34:05.341Z] AI Response with tool completed
+[2026-02-25T20:34:28.050Z] Created new chat: fa16e939-1a09-4a89-b0f7-a9a836bb0354
+[2026-02-25T20:34:43.652Z] Sending to Ollama with 0 previous messages
+[2026-02-25T20:34:50.752Z] AI Response with tool completed
+[2026-02-25T20:35:16.462Z] Created new chat: a22cddd4-a848-42f3-aaa8-3aeaa1ee676b
+[2026-02-25T20:35:21.410Z] Sending to Ollama with 0 previous messages
+[2026-02-25T20:35:44.605Z] AI Response with tool completed
+[2026-02-25T20:36:00.569Z] Frontend disconnected: yaubIBvQBriQy_SIAAAE
+[2026-02-25T20:36:00.612Z] Frontend connected: tb7p1I5nFx2lmdk4AAAH
+[2026-02-25T20:36:07.130Z] Deleted chat: fa16e939-1a09-4a89-b0f7-a9a836bb0354
+[2026-02-25T20:36:07.935Z] Deleted chat: a8ad9058-733d-4d46-b149-60983cd6da39
+[2026-02-25T20:36:08.780Z] Deleted chat: a22cddd4-a848-42f3-aaa8-3aeaa1ee676b
+[2026-02-25T20:36:10.646Z] Deleted chat: 3ae82caa-be26-45d1-9774-736f76d9b581

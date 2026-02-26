@@ -1,0 +1,18 @@
+{
+  "id": "36271409-0a66-4492-b462-a601b6268993",
+  "title": "when is my birthday",
+  "messages": [
+    {
+      "role": "user",
+      "content": "when is my birthday",
+      "timestamp": "2026-02-26T10:05:48.159Z"
+    },
+    {
+      "role": "assistant",
+      "content": "Your birthday is on **28 October**.",
+      "timestamp": "2026-02-26T10:05:50.973Z"
+    }
+  ],
+  "createdAt": "2026-02-26T10:05:41.341Z",
+  "updatedAt": "2026-02-26T10:05:50.973Z"
+}

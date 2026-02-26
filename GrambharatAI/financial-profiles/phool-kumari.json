@@ -1,0 +1,84 @@
+{
+  "personalInfo": {
+    "name": "Phool Kumari",
+    "age": 35,
+    "occupation": "Self Help Group Leader & Dairy Business",
+    "education": "12th Pass",
+    "familyMembers": 4,
+    "village": "Phoolpur",
+    "district": "Azamgarh"
+  },
+  "income": {
+    "monthlySalary": 0,
+    "businessIncome": 25000,
+    "dairyIncome": 15000,
+    "otherIncome": 5000,
+    "totalMonthlyIncome": 45000,
+    "incomeStability": "Regular",
+    "businessYears": 6
+  },
+  "assets": {
+    "landOwnership": {
+      "acres": 2.0,
+      "estimatedValue": 1200000,
+      "irrigated": false
+    },
+    "property": {
+      "house": "Owned",
+      "estimatedValue": 600000
+    },
+    "livestock": {
+      "buffaloes": 8,
+      "estimatedValue": 480000
+    },
+    "gold": {
+      "grams": 80,
+      "estimatedValue": 480000
+    },
+    "bankBalance": 85000,
+    "businessAssets": 200000,
+    "totalAssets": 3045000
+  },
+  "liabilities": {
+    "existingLoans": [
+      {
+        "type": "Mudra Loan",
+        "principal": 300000,
+        "outstanding": 180000,
+        "emi": 12000,
+        "startDate": "2021-06-10",
+        "tenure": 48,
+        "remainingMonths": 15
+      },
+      {
+        "type": "Personal Loan",
+        "principal": 50000,
+        "outstanding": 15000,
+        "emi": 5000,
+        "startDate": "2023-09-01",
+        "tenure": 12,
+        "remainingMonths": 3
+      }
+    ],
+    "totalDebt": 195000,
+    "monthlyEMI": 17000
+  },
+  "creditHistory": {
+    "totalAccounts": 4,
+    "oldestAccountYears": 6,
+    "recentDefaults": 0,
+    "totalDefaults": 0,
+    "onTimePayments": 68,
+    "latePayments": 1,
+    "missedPayments": 0,
+    "creditInquiries": 3,
+    "lastInquiryMonths": 8
+  },
+  "expenses": {
+    "monthlyExpenses": 12000,
+    "educationExpenses": 4000,
+    "medicalExpenses": 1500,
+    "businessExpenses": 8000,
+    "totalMonthlyExpenses": 25500
+  }
+}

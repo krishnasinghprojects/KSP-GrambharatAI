@@ -1,0 +1,72 @@
+{
+  "personalInfo": {
+    "name": "Ram Vilas",
+    "age": 42,
+    "occupation": "Farmer",
+    "education": "10th Pass",
+    "familyMembers": 5,
+    "village": "Rampur",
+    "district": "Sitapur"
+  },
+  "income": {
+    "monthlySalary": 18000,
+    "agriculturalIncome": 12000,
+    "otherIncome": 3000,
+    "totalMonthlyIncome": 33000,
+    "incomeStability": "Seasonal",
+    "employmentYears": 20
+  },
+  "assets": {
+    "landOwnership": {
+      "acres": 5.5,
+      "estimatedValue": 2750000,
+      "irrigated": true
+    },
+    "property": {
+      "house": "Owned",
+      "estimatedValue": 800000
+    },
+    "livestock": {
+      "cattle": 3,
+      "estimatedValue": 150000
+    },
+    "gold": {
+      "grams": 50,
+      "estimatedValue": 300000
+    },
+    "bankBalance": 125000,
+    "totalAssets": 4125000
+  },
+  "liabilities": {
+    "existingLoans": [
+      {
+        "type": "Agricultural Loan",
+        "principal": 200000,
+        "outstanding": 85000,
+        "emi": 8500,
+        "startDate": "2022-03-15",
+        "tenure": 36,
+        "remainingMonths": 10
+      }
+    ],
+    "totalDebt": 85000,
+    "monthlyEMI": 8500
+  },
+  "creditHistory": {
+    "totalAccounts": 3,
+    "oldestAccountYears": 8,
+    "recentDefaults": 0,
+    "totalDefaults": 0,
+    "onTimePayments": 94,
+    "latePayments": 2,
+    "missedPayments": 0,
+    "creditInquiries": 2,
+    "lastInquiryMonths": 18
+  },
+  "expenses": {
+    "monthlyExpenses": 15000,
+    "educationExpenses": 3000,
+    "medicalExpenses": 2000,
+    "totalMonthlyExpenses": 20000
+  }
+}

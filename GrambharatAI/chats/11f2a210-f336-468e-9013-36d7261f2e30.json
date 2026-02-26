@@ -1,0 +1,23 @@
+{
+  "id": "11f2a210-f336-468e-9013-36d7261f2e30",
+  "title": "whats my name",
+  "messages": [
+    {
+      "role": "user",
+      "content": "whats my name",
+      "timestamp": "2026-02-26T10:37:49.465Z"
+    },
+    {
+      "role": "assistant",
+      "content": "Your name is **Krishna Singh**.",
+      "timestamp": "2026-02-26T10:37:57.281Z",
+      "alternatives": [
+        "Your name is **Krishna Singh**.",
+        "Your name is **Krishna Singh**."
+      ],
+      "activeIndex": 1
+    }
+  ],
+  "createdAt": "2026-02-26T10:37:45.162Z",
+  "updatedAt": "2026-02-26T10:51:39.254Z"
+}

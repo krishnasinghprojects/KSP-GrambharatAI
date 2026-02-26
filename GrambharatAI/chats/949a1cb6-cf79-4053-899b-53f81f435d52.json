@@ -1,0 +1,18 @@
+{
+  "id": "949a1cb6-cf79-4053-899b-53f81f435d52",
+  "title": "what is 2+2 ?",
+  "messages": [
+    {
+      "role": "user",
+      "content": "what is 2+2 ?",
+      "timestamp": "2026-02-26T08:57:30.887Z"
+    },
+    {
+      "role": "assistant",
+      "content": "YEEEHIII! 2 + 2 equals 4! 🎉",
+      "timestamp": "2026-02-26T08:57:33.387Z"
+    }
+  ],
+  "createdAt": "2026-02-26T08:57:26.491Z",
+  "updatedAt": "2026-02-26T08:57:33.387Z"
+}

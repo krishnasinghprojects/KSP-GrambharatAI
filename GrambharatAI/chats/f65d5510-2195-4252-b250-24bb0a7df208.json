@@ -1,0 +1,18 @@
+{
+  "id": "f65d5510-2195-4252-b250-24bb0a7df208",
+  "title": "What is an apple in 50 words explain",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What is an apple in 50 words explain",
+      "timestamp": "2026-02-26T08:58:11.121Z"
+    },
+    {
+      "role": "assistant",
+      "content": "HIHIHIHIHI  \nAn apple is a sweet, crisp fruit produced by apple trees, part of the rose family. It grows in temperate regions, offers vitamin C, dietary fiber, antioxidants, and has varieties like Red Delicious, Gala, and Granny Smith. It’s versatile in desserts and healthy snacks and smoothies, pies, sauces, salads today.",
+      "timestamp": "2026-02-26T08:58:31.621Z"
+    }
+  ],
+  "createdAt": "2026-02-26T08:58:02.411Z",
+  "updatedAt": "2026-02-26T08:58:31.621Z"
+}

@@ -1,0 +1,18 @@
+{
+  "memories": [
+    {
+      "id": "e0b0db3c-afe4-46f9-bd0d-912142612765",
+      "content": "User's name is Krishna Singh, born in Lucknow.",
+      "category": "personal_details",
+      "timestamp": "2026-02-26T10:16:28.203Z",
+      "createdAt": "26 Feb 2026, 03:46 pm"
+    },
+    {
+      "id": "ce98f99f-9c79-4cad-8847-7dcc8157d503",
+      "content": "User's birthday is 28 October",
+      "category": "personal_info",
+      "timestamp": "2026-02-26T10:05:34.409Z",
+      "createdAt": "26 Feb 2026, 03:35 pm"
+    }
+  ]
+}

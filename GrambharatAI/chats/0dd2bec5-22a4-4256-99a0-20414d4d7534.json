@@ -1,0 +1,18 @@
+{
+  "id": "0dd2bec5-22a4-4256-99a0-20414d4d7534",
+  "title": "I was born in lucknow my name is krishna singh rem...",
+  "messages": [
+    {
+      "role": "user",
+      "content": "I was born in lucknow my name is krishna singh remember that",
+      "timestamp": "2026-02-26T10:16:20.260Z"
+    },
+    {
+      "role": "assistant",
+      "content": "Got it! I’ve noted that your name is Krishna Singh and you were born in Lucknow. If there’s anything specific you’d like to talk about or any help you need, just let me know!",
+      "timestamp": "2026-02-26T10:16:30.247Z"
+    }
+  ],
+  "createdAt": "2026-02-26T10:16:03.377Z",
+  "updatedAt": "2026-02-26T10:16:30.247Z"
+}

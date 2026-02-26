@@ -1,0 +1,82 @@
+{
+  "personalInfo": {
+    "name": "Sita Devi",
+    "age": 28,
+    "occupation": "Anganwadi Worker",
+    "education": "Graduate",
+    "familyMembers": 3,
+    "village": "Sitapur",
+    "district": "Lucknow"
+  },
+  "income": {
+    "monthlySalary": 12000,
+    "agriculturalIncome": 0,
+    "otherIncome": 2000,
+    "totalMonthlyIncome": 14000,
+    "incomeStability": "Regular",
+    "employmentYears": 5
+  },
+  "assets": {
+    "landOwnership": {
+      "acres": 0.5,
+      "estimatedValue": 300000,
+      "irrigated": true
+    },
+    "property": {
+      "house": "Rented",
+      "estimatedValue": 0
+    },
+    "livestock": {
+      "goats": 4,
+      "estimatedValue": 40000
+    },
+    "gold": {
+      "grams": 25,
+      "estimatedValue": 150000
+    },
+    "bankBalance": 35000,
+    "totalAssets": 525000
+  },
+  "liabilities": {
+    "existingLoans": [
+      {
+        "type": "Education Loan",
+        "principal": 150000,
+        "outstanding": 120000,
+        "emi": 6000,
+        "startDate": "2020-01-15",
+        "tenure": 60,
+        "remainingMonths": 20
+      },
+      {
+        "type": "Credit Card",
+        "principal": 25000,
+        "outstanding": 18000,
+        "emi": 3000,
+        "startDate": "2023-05-01",
+        "tenure": 12,
+        "remainingMonths": 6
+      }
+    ],
+    "totalDebt": 138000,
+    "monthlyEMI": 9000
+  },
+  "creditHistory": {
+    "totalAccounts": 3,
+    "oldestAccountYears": 4,
+    "recentDefaults": 1,
+    "totalDefaults": 1,
+    "onTimePayments": 42,
+    "latePayments": 5,
+    "missedPayments": 1,
+    "creditInquiries": 5,
+    "lastInquiryMonths": 3
+  },
+  "expenses": {
+    "monthlyExpenses": 8000,
+    "educationExpenses": 1000,
+    "medicalExpenses": 1000,
+    "rentExpenses": 3000,
+    "totalMonthlyExpenses": 13000
+  }
+}

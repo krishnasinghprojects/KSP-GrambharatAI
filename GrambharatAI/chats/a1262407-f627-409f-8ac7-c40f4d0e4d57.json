@@ -1,0 +1,18 @@
+{
+  "id": "a1262407-f627-409f-8ac7-c40f4d0e4d57",
+  "title": "My birthday is on 28 october remember that",
+  "messages": [
+    {
+      "role": "user",
+      "content": "My birthday is on 28 october remember that",
+      "timestamp": "2026-02-26T10:05:24.119Z"
+    },
+    {
+      "role": "assistant",
+      "content": "Got it! Your birthday is on **28 October**. I’ll keep that in mind. Let me know if there’s anything else you’d like me to remember or if you need help planning a celebration!",
+      "timestamp": "2026-02-26T10:05:36.737Z"
+    }
+  ],
+  "createdAt": "2026-02-26T09:56:27.684Z",
+  "updatedAt": "2026-02-26T10:05:36.737Z"
+}

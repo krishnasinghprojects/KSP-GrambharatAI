@@ -1,0 +1,83 @@
+{
+  "personalInfo": {
+    "name": "Radha Sharma",
+    "age": 31,
+    "occupation": "Primary School Teacher",
+    "education": "B.Ed",
+    "familyMembers": 4,
+    "village": "Radhakund",
+    "district": "Mathura"
+  },
+  "income": {
+    "monthlySalary": 32000,
+    "tuitionIncome": 8000,
+    "otherIncome": 0,
+    "totalMonthlyIncome": 40000,
+    "incomeStability": "Very Stable",
+    "employmentYears": 8
+  },
+  "assets": {
+    "landOwnership": {
+      "acres": 3.0,
+      "estimatedValue": 2100000,
+      "irrigated": true
+    },
+    "property": {
+      "house": "Owned",
+      "estimatedValue": 1200000
+    },
+    "livestock": {
+      "cattle": 1,
+      "estimatedValue": 50000
+    },
+    "gold": {
+      "grams": 100,
+      "estimatedValue": 600000
+    },
+    "bankBalance": 180000,
+    "mutualFunds": 250000,
+    "totalAssets": 4380000
+  },
+  "liabilities": {
+    "existingLoans": [
+      {
+        "type": "Car Loan",
+        "principal": 400000,
+        "outstanding": 280000,
+        "emi": 14000,
+        "startDate": "2022-01-10",
+        "tenure": 48,
+        "remainingMonths": 20
+      },
+      {
+        "type": "Personal Loan",
+        "principal": 100000,
+        "outstanding": 45000,
+        "emi": 9000,
+        "startDate": "2023-03-01",
+        "tenure": 12,
+        "remainingMonths": 5
+      }
+    ],
+    "totalDebt": 325000,
+    "monthlyEMI": 23000
+  },
+  "creditHistory": {
+    "totalAccounts": 5,
+    "oldestAccountYears": 8,
+    "recentDefaults": 0,
+    "totalDefaults": 0,
+    "onTimePayments": 92,
+    "latePayments": 2,
+    "missedPayments": 0,
+    "creditInquiries": 4,
+    "lastInquiryMonths": 12
+  },
+  "expenses": {
+    "monthlyExpenses": 15000,
+    "educationExpenses": 5000,
+    "medicalExpenses": 2000,
+    "vehicleExpenses": 3000,
+    "totalMonthlyExpenses": 25000
+  }
+}
